@@ -15,21 +15,21 @@ var server = app.listen(port, function(){
 app.use(express.static('public'));
 
 //Socket setup
-// var io = socket(server);
-//
-// var active_connections = 0;
-//
-// io.on('connection', function(socket){
-//   active_connections++;
-//   console.log('Socket connection established: ' + active_connections + ' active. ' + socket.id);
-//
-//   socket.on('chat', function(data){
-//     io.sockets.emit('chat', data);
-//   });
-//
-//   socket.on('typing', function(data) {
-//     socket.broadcast.emit('typing', data);
-//
-//   });
-//
-// });
+var io = socket(server);
+
+var active_connections = 0;
+
+io.on('connection', function(socket){
+  active_connections++;
+  console.log('Socket connection established: ' + active_connections + ' active. ' + socket.id);
+
+  socket.on('chat', function(data){
+    io.sockets.emit('chat', data);
+  });
+
+  socket.on('typing', function(data) {
+    socket.broadcast.emit('typing', data);
+
+  });
+
+});
