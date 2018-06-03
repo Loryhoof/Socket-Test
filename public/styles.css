@@ -1,18 +1,100 @@
+
+body {
+	background-color: #333;
+	font-family: arial;
+	color: white;
+	text-align: left;
+}
+
+header {
+	font-size: 50px;
+}
+
+.tol {
+	font-size: 25px;
+	margin: 2.5%;
+  color: white;
+}
+
+#user_count {
+	font-size: 15px;
+	font-weight: lighter;
+	font-style: oblique;
+	color: lightgrey;
+}
+
+
 textarea {
-	  width: 50%;
-    height: 75px;
-    padding: 12px 20px;
+		width: 50%;
+    height: 400px;
+		color:  #47d147;
+    padding: 10px 10px;
     box-sizing: border-box;
     border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #222;
+    font-size: 14px;
+    resize: none;
+    overflow-y: auto;
+		border-color: #111;
+		font-weight: bold;
+}
+
+
+#send {
+    background-color: #777;
+    border-color: #222;
+		height: 100px;
+    color: white;
+    font-size: 30.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+		border: 1px solid black;
+		background: #7289da;
+
+}
+
+#title {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#message {
+    width: 50%;
+    height: 100px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-color: #222;
     border-radius: 4px;
     background-color: #f8f8f8;
     font-size: 18px;
     resize: none;
     overflow-y: auto;
+    margin: 0 0 5px 0;
+		text-align: left;
 }
 
-body {
-  font-family: arial;
-  background-color: #222;
-  color: white;
+#handle {
+	color: white;
+	margin: 5px 5px 5px 1%;
+	text-align: center;
+	background: #47d147;
+	border: none;
+	border-radius: 5px;
+	font-weight:300;
+	font-size: 20px;
+
+
+
+}
+
+::placeholder {
+    color: grey;
+}
+
+#beware {
+    font-size: 20px;
 }

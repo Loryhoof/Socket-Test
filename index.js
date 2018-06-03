@@ -1,7 +1,8 @@
 var express = require('express');
 var socket = require('socket.io');
 
-var port = 80; // 443
+var port = 80;
+//var port = 4000;
 
 //App setup
 var app = express();
@@ -17,14 +18,16 @@ app.use(express.static('public'));
 //Socket setup
 var io = socket(server);
 
-var active_connections = 0;
 
 io.on('connection', function(socket){
-  active_connections++;
-  console.log('Socket connection established: ' + active_connections + ' active. ' + socket.id);
+
+  var total = io.engine.clientsCount;
+  socket.emit('getCount', total);
+  console.log('Socket connection established: ' + total + ' active. ' + socket.id);
+
 
   socket.on('chat', function(data){
-    io.sockets.emit('chat', data);
+    socket.emit('chat', data);
   });
 
   socket.on('typing', function(data) {

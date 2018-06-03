@@ -2,23 +2,19 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7">
     <link href="/styles.css" rel="stylesheet"/>
     <title>WebSocket Test</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
   </head>
   <body>
 
-    <div id="title">ZZX Chat
-    <input id="handle" placeholder="Username"></input>
-    <p id="user_count"></p>
-    </div>
-
+    <div>ZZX Chat</div>
     <p></p>
 
     <form>
-      <textarea readonly disabled id="output"></textarea>
+      <div id="output"></div>
       <div id="feedback"></div>
+      <input id="handle" placeholder="Username"></input>
       <input id="message" placeholder="Message"></input>
       <button type="button" id="send">Send</button>
     </form>
