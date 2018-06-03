@@ -1,7 +1,7 @@
 var express = require('express');
 var socket = require('socket.io');
 
-var port = 22; // 22
+var port = 443; // 443
 
 //App setup
 var app = express();
