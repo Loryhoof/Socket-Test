@@ -9,11 +9,13 @@ var server = app.listen(port, function(){
   console.log('listening to requests on port ' + port)
 });
 
+
+var io = socket(server);
 //Static files
 app.use(express.static('public'));
 
 //Socket setup
-var io = socket(server);
+
 
 var active_connections = 0;
 
