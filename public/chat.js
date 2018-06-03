@@ -1,6 +1,4 @@
 // Make connection
-var socket = require('socket.io');
-
 var socket = io.connect('http://139.59.158.3:4000');
 
 // Query DOM

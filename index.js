@@ -10,12 +10,12 @@ var server = app.listen(port, function(){
 });
 
 
-var io = socket(server);
+
 //Static files
 app.use(express.static('public'));
 
 //Socket setup
-
+var io = socket(server);
 
 var active_connections = 0;
 
