@@ -1,6 +1,6 @@
 // Make connection
-//var socket = io.connect('http://139.59.158.3:80');
-var socket = io.connect('http://localhost:4000');
+var socket = io.connect('http://139.59.158.3:80');
+//var socket = io.connect('http://localhost:4000');
 
 
 // Query DOM

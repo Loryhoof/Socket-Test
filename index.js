@@ -1,8 +1,8 @@
 var express = require('express');
 var socket = require('socket.io');
 
-//var port = 80;
-var port = 4000;
+var port = 80;
+//var port = 4000;
 
 //App setup
 var app = express();
