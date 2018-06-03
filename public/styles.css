@@ -25,7 +25,7 @@ header {
 
 
 textarea {
-		width: 50%;
+		width: 70%;
     height: 400px;
 		color:  #47d147;
     padding: 10px 10px;
@@ -37,7 +37,8 @@ textarea {
     resize: none;
     overflow-y: auto;
 		border-color: #111;
-		font-weight: bold;
+		font-weight:550;
+		font-style: Impact;
 }
 
 
@@ -62,7 +63,7 @@ textarea {
 }
 
 #message {
-    width: 50%;
+    width: 60%;
     height: 100px;
     padding: 0px 10px;
     box-sizing: border-box;

@@ -2,6 +2,7 @@
 var socket = io.connect('http://139.59.158.3:80');
 //var socket = io.connect('http://localhost:4000');
 
+var random_number = Math.floor(Math.random() * 99) + 1;
 
 // Query DOM
 var message = document.getElementById('message'),
@@ -33,17 +34,33 @@ message.addEventListener('keypress', function(event) {
 });
 
 socket.on('getCount', function(total) {
+
   user_count.innerHTML = total + ' users online';
 });
 
 // Listen for events
 socket.on('chat', function(data){
   feedback.innerHTML = "";
-  output.innerHTML += data.handle + ': ' + data.message + "\n";
+
+
+  if (data.handle == "") {
+    output.innerHTML += 'user' + random_number + ': ' + data.message + "\n";
+  } else {
+
+    output.innerHTML += data.handle + ': ' + data.message + "\n";
+  };
+
+  if (data.message == "/clear") {
+    output.innerHTML = "";
+  }
+
+  if (data.message == "!ban") {
+    output.innerHTML = "user" + random_number + " has been permanently banned." + "\n";
+  }
+
   output.scrollTop = output.scrollHeight;
 });
 
-//<span style="color: #ff0000">January 30, 2011</span>
 
 socket.on('typing', function(data) {
   feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
