@@ -25,9 +25,9 @@ header {
 
 
 textarea {
-		width: 70%;
-    height: 400px;
-		color:  #47d147;
+		width: 80%;
+    height: 450px;
+		color:  lightgrey;
     padding: 10px 10px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -37,23 +37,15 @@ textarea {
     resize: none;
     overflow-y: auto;
 		border-color: #111;
-		font-weight:550;
-		font-style: Impact;
+		font-weight: normal;
+		font-style: Arial;
+		line-height: 25px;
 }
 
 
 #send {
-    background-color: #777;
-    border-color: #222;
-		height: 100px;
-    color: white;
-    font-size: 30.5px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-		border: 1px solid black;
-		background: #7289da;
+    background: #333;
+		border: none;
 
 }
 
@@ -63,19 +55,20 @@ textarea {
 }
 
 #message {
-    width: 60%;
-    height: 100px;
+    width: 80%;
+    height: 80px;
     padding: 0px 10px;
     box-sizing: border-box;
     border: 1px solid black;
-    border-color: #222;
+    border-color: #111;
     border-radius: 4px;
-    background-color: #f8f8f8;
+    background-color: #222;
     font-size: 18px;
     resize: none;
     overflow-y: auto;
     margin: 0 0 5px 0;
 		text-align: left;
+		color: white;
 }
 
 #handle {
@@ -88,14 +81,28 @@ textarea {
 	font-weight:300;
 	font-size: 20px;
 
-
-
 }
 
 ::placeholder {
     color: grey;
 }
 
-#beware {
-    font-size: 20px;
+#feedback {
+	font-style: oblique;
+	color: lightgrey;
+}
+
+#sendbuttonthingnotused {
+	background-color: #777;
+	border-color: #222;
+	height: 80px;
+	color: white;
+	font-size: 30.5px;
+	border-radius: 4px;
+	cursor: pointer;
+	display: inline-block;
+	position: absolute;
+	border: 1px solid black;
+	background: #7289da;
+
 }

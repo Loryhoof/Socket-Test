@@ -47,6 +47,7 @@ socket.on('chat', function(data){
     output.innerHTML += 'user' + random_number + ': ' + data.message + "\n";
   } else {
 
+
     output.innerHTML += data.handle + ': ' + data.message + "\n";
   };
 
@@ -54,8 +55,20 @@ socket.on('chat', function(data){
     output.innerHTML = "";
   }
 
-  if (data.message == "!ban") {
-    output.innerHTML = "user" + random_number + " has been permanently banned." + "\n";
+  if (data.message == "/ban") {
+    output.innerHTML += data.handle + " has been permanently banned." + "\n";
+  }
+
+  if (data.message == "!random") {
+    output.innerHTML += "Bot: " + (Math.floor(Math.random() * 99) + 1) + "\n";
+  }
+
+  if (data.message == "!hug") {
+    output.innerHTML += "Bot: " + "I wuuve you *HUG*" + "\n";
+  }
+
+  if (data.message == "!help") {
+    output.innerHTML += "Bot: You can use " + "/clear /ban !random !hug" + "\n";
   }
 
   output.scrollTop = output.scrollHeight;
@@ -64,5 +77,6 @@ socket.on('chat', function(data){
 
 socket.on('typing', function(data) {
   feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+
 
 });
