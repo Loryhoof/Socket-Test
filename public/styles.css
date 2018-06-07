@@ -16,6 +16,12 @@ header {
   color: white;
 }
 
+#output {
+	overflow-y: auto;
+	height: 450px;
+
+}
+
 #user_count {
 	font-size: 15px;
 	font-weight: lighter;
@@ -69,6 +75,8 @@ textarea {
     margin: 0 0 5px 0;
 		text-align: left;
 		color: white;
+		position: fixed;
+		bottom: 2%;
 }
 
 #handle {

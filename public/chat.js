@@ -12,7 +12,14 @@ var message = document.getElementById('message'),
     feedback = document.getElementById('feedback');
     user_count = document.getElementById('user_count');
 
-
+    var colors = [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "purple"
+    ];
 
 // Emit events
 btn.addEventListener('click', function(){
@@ -44,11 +51,10 @@ socket.on('chat', function(data){
 
 
   if (data.handle == "") {
-    output.innerHTML += 'user' + random_number + ': ' + data.message + "\n";
+    output.innerHTML += '<p><strong><span style="color:orange">' + 'user' + random_number + ': </strong></span>' + data.message + '</p>' + "\n";
   } else {
 
-
-    output.innerHTML += data.handle + ': ' + data.message + "\n";
+    output.innerHTML += '<p><strong><span style="color:red">' + data.handle + ': </strong></span>' + data.message + '</p>' + "\n";
   };
 
   if (data.message == "/clear") {
