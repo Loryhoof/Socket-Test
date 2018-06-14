@@ -4,6 +4,7 @@ var socket = io.connect('http://139.59.158.3:80');
 
 var random_number = Math.floor(Math.random() * 99) + 1;
 
+
 // Query DOM
 var message = document.getElementById('message'),
     handle = document.getElementById('handle'),
@@ -11,6 +12,32 @@ var message = document.getElementById('message'),
     output = document.getElementById('output'),
     feedback = document.getElementById('feedback');
     user_count = document.getElementById('user_count');
+
+//user-EMOTES
+var peepoHappy = "<embed src='https://assets.change.org/photos/2/io/gq/skIogQbuyLePLdd-800x450-noPad.jpg?1527916573' width='30' height='30' />",
+    TriHard = "<embed src='https://ih0.redbubble.net/image.501881470.8713/flat,800x800,070,f.u2.jpg' width='30' height='30' />",
+    TriHardVid = "<embed src='https://www.youtube.com/embed/9f9KzWNqKGo?autoplay=1' width='640' height='360' />";
+    cmonBruh = "<embed src='https://static-cdn.jtvnw.net/jtv_user_pictures/cmonbruh-profile_image-84cf1a6644b6e42a-300x300.png' width='30' height='30' />"
+
+    function sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function(){
+            this.sound.play();
+        }
+        this.stop = function(){
+            this.sound.pause();
+        }
+    }
+
+
+var mySound;
+mySound = new sound("Alert - 01.mp3");
+
 
     var colors = [
         "red",
@@ -28,6 +55,13 @@ btn.addEventListener('click', function(){
       handle: handle.value
   });
   message.value = "";
+});
+
+btn.addEventListener('click', function() {
+  socket.emit('alert', {
+    mySound
+  })
+
 });
 
 message.addEventListener('keypress', function(event) {
@@ -55,6 +89,7 @@ socket.on('chat', function(data){
   } else {
 
     output.innerHTML += '<p><strong><span style="color:red">' + data.handle + ': </strong></span>' + data.message + '</p>' + "\n";
+
   };
 
   if (data.message == "/clear") {
@@ -69,8 +104,24 @@ socket.on('chat', function(data){
     output.innerHTML += "Bot: " + (Math.floor(Math.random() * 99) + 1) + "\n";
   }
 
+  if (data.message == "peepoHappy") {
+    output.innerHTML += peepoHappy;
+  }
+
+  if (data.message == "TriHard") {
+    output.innerHTML += TriHard;
+  }
+
+  if (data.message == "TriHardVid") {
+    output.innerHTML += TriHardVid;
+  }
+
+  if (data.message == "cmonBruh") {
+    output.innerHTML+= cmonBruh;
+  }
+
   if (data.message == "!hug") {
-    output.innerHTML += "Bot: " + "I wuuve you *HUG*" + "\n";
+    output.innerHTML += "Bot: " + "I wuuve you *HUG* " + peepoHappy + "\n";
   }
 
   if (data.message == "!help") {
@@ -85,4 +136,8 @@ socket.on('typing', function(data) {
   feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 
 
+});
+
+socket.on('alert', function(data) {
+  mySound.play();
 });
