@@ -19,8 +19,12 @@ var message = document.getElementById('message'),
 //user-EMOTES
 var peepoHappy = "<embed src='https://assets.change.org/photos/2/io/gq/skIogQbuyLePLdd-800x450-noPad.jpg?1527916573' width='30' height='30' />",
     TriHard = "<embed src='https://i.redd.it/z7b7otx1f5zy.png' width='30' height='30' />",
-    TriHardVid = "<embed src='https://www.youtube.com/embed/9f9KzWNqKGo?autoplay=1' width='640' height='360' />";
-    cmonBruh = "<embed src='https://static-cdn.jtvnw.net/jtv_user_pictures/cmonbruh-profile_image-84cf1a6644b6e42a-300x300.png' width='30' height='30' />"
+    TriHardVid = "<embed src='https://www.youtube.com/embed/9f9KzWNqKGo?autoplay=1' width='640' height='360' />",
+    cmonBruh = "<embed src='https://static-cdn.jtvnw.net/jtv_user_pictures/cmonbruh-profile_image-84cf1a6644b6e42a-300x300.png' width='30' height='30' />",
+    FeelsOkayMan = "<embed src='https://static-cdn.jtvnw.net/jtv_user_pictures/fe01955dc0f08cbc-profile_image-300x300.png' width='30' height='30' />",
+    PepeHands = "<embed src='https://static-cdn.jtvnw.net/jtv_user_pictures/e3f85144-5bda-4ae3-8fc5-c7c813c2fd7c-profile_image-300x300.png' width='30' height='30' />",
+    monkaS = "<embed src='https://d3npzzrehyahmo.cloudfront.net/images/3c/25/3c2518974fa99fb1e1c8f10324c9e78a_37866d96198_t.png' width='30' height='30' />";
+
 
 
     //sound function
@@ -105,7 +109,10 @@ socket.on('chat', function(data){
   .replace(/"/g, '&quot;')
   .replace(/TriHard/g, TriHard)
   .replace(/peepoHappy/g, peepoHappy)
-  .replace(/cmonBruh/g, cmonBruh);
+  .replace(/cmonBruh/g, cmonBruh)
+  .replace(/FeelsOkayMan/g, FeelsOkayMan)
+  .replace(/PepeHands/g, PepeHands)
+  .replace(/monkaS/g, monkaS);
 
 
   newName = data.handle.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -125,7 +132,9 @@ socket.on('chat', function(data){
       output.innerHTML += '<p><strong><span style="color:orange">' + 'user' + random_number + ': </strong></span>' + '<a style="color:white" target="_blank" href="' + newMes + '">' + newMes +'</a>' + "\n";
 
     } else {
-      output.innerHTML += '<p><strong><span style="color:orange">' + 'user' + random_number + ': </strong></span>' + newMes + '</p>' + "\n";
+
+        output.innerHTML += '<p><strong><span style="color:orange">' + 'user' + random_number + ': </strong></span>' + newMes + '</p>' + "\n";
+
     }
 
 
@@ -136,7 +145,9 @@ socket.on('chat', function(data){
 
 
     if (n == true) {
+
       output.innerHTML += '<p><strong><span style="color:red">' + newName + ': </strong></span>' + '<a style="color:white" target="_blank" href="' + newMes + '">' + newMes +'</a>' + "\n";
+
 
     } else {
       output.innerHTML += '<p><strong><span style="color:red">' + newName + ': </strong></span>' + newMes + '</p>' + "\n";
@@ -161,13 +172,17 @@ socket.on('chat', function(data){
     output.innerHTML += TriHardVid;
   }
 
+  if (data.message == "!emotes") {
+    output.innerHTML += peepoHappy + PepeHands + monkaS + FeelsOkayMan + TriHard + cmonBruh;
+  }
+
 
   if (data.message == "!hug") {
     output.innerHTML += "Bot: " + "I wuuve you *HUG* " + peepoHappy + "\n";
   }
 
   if (data.message == "!help") {
-    output.innerHTML += "Bot: You can use " + "/clear /ban !random !hug" + "\n";
+    output.innerHTML += "Bot: You can use " + "/clear /ban !random !hug !emotes" + "\n";
   }
 
   output.scrollTop = output.scrollHeight;
