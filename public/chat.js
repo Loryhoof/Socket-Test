@@ -118,8 +118,10 @@ socket.on('chat', function(data){
 
     var n = (newMes.includes(".c") || newMes.includes(".d") || newMes.includes("http:") || newMes.includes("https:") || newMes.includes("www."));
 
+    var b = (newMes.includes(" ")); //if no spaces in string
 
-    if (n == true) {
+
+    if (n == true && b == false) {
       output.innerHTML += '<p><strong><span style="color:orange">' + 'user' + random_number + ': </strong></span>' + '<a style="color:white" target="_blank" href="' + newMes + '">' + newMes +'</a>' + "\n";
 
     } else {
