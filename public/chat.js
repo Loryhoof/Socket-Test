@@ -4,6 +4,8 @@ var socket = io.connect('http://139.59.158.3:80');
 
 var random_number = Math.floor(Math.random() * 99) + 1;
 
+var num = 0;
+
 
 // Query DOM
 var message = document.getElementById('message'),
@@ -12,6 +14,7 @@ var message = document.getElementById('message'),
     output = document.getElementById('output'),
     feedback = document.getElementById('feedback');
     user_count = document.getElementById('user_count');
+    tab = document.getElementById('tab');
 
 //user-EMOTES
 var peepoHappy = "<embed src='https://assets.change.org/photos/2/io/gq/skIogQbuyLePLdd-800x450-noPad.jpg?1527916573' width='30' height='30' />",
@@ -73,6 +76,9 @@ btn.addEventListener('click', function() {
 message.addEventListener('keypress', function(event) {
   socket.emit('typing', handle.value)
 
+  tab.innerHTML = "WebSocket Test";
+  num = 0;
+
   if (event.keyCode === 13) {
     event.preventDefault();
 
@@ -95,6 +101,7 @@ socket.on('chat', function(data){
   feedback.innerHTML = "";
   newMes = data.message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   newName = data.handle.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
 
 
   if (data.handle == "") {
@@ -147,11 +154,14 @@ socket.on('chat', function(data){
 
 
 socket.on('typing', function(data) {
-  feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+  newHandle = data.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  feedback.innerHTML = '<p><em>' + newHandle + ' is typing a message...</em></p>';
 
 
 });
 
 socket.on('alert', function(data) {
+  num++;
+  tab.innerHTML = "(" + num + ") " + "WebSocket Test";
   mySound.play();
 });
