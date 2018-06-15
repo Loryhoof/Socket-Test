@@ -26,6 +26,8 @@ io.on('connection', function(socket){
   console.log('Socket connection established: ' + total + ' active. ' + socket.id);
 
 
+
+
   socket.on('chat', function(data){
     io.sockets.emit('chat', data);
   });

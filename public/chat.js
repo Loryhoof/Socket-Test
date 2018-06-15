@@ -19,6 +19,8 @@ var peepoHappy = "<embed src='https://assets.change.org/photos/2/io/gq/skIogQbuy
     TriHardVid = "<embed src='https://www.youtube.com/embed/9f9KzWNqKGo?autoplay=1' width='640' height='360' />";
     cmonBruh = "<embed src='https://static-cdn.jtvnw.net/jtv_user_pictures/cmonbruh-profile_image-84cf1a6644b6e42a-300x300.png' width='30' height='30' />"
 
+
+    //sound function
     function sound(src) {
         this.sound = document.createElement("audio");
         this.sound.src = src;
@@ -33,6 +35,10 @@ var peepoHappy = "<embed src='https://assets.change.org/photos/2/io/gq/skIogQbuy
             this.sound.pause();
         }
     }
+
+    function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
 
 var mySound;
@@ -74,21 +80,29 @@ message.addEventListener('keypress', function(event) {
   };
 });
 
-socket.on('getCount', function(total) {
+//socket.emit('getCount', total);
 
+
+
+socket.on('getCount', function(total) {
   user_count.innerHTML = total + ' users online';
 });
+
+
 
 // Listen for events
 socket.on('chat', function(data){
   feedback.innerHTML = "";
+  newMes = data.message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  newName = data.handle.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 
   if (data.handle == "") {
-    output.innerHTML += '<p><strong><span style="color:orange">' + 'user' + random_number + ': </strong></span>' + data.message + '</p>' + "\n";
+
+    output.innerHTML += '<p><strong><span style="color:orange">' + 'user' + random_number + ': </strong></span>' + newMes + '</p>' + "\n";
   } else {
 
-    output.innerHTML += '<p><strong><span style="color:red">' + data.handle + ': </strong></span>' + data.message + '</p>' + "\n";
+    output.innerHTML += '<p><strong><span style="color:red">' + newName + ': </strong></span>' + newMes + '</p>' + "\n";
 
   };
 
