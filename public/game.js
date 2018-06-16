@@ -13,10 +13,9 @@ var fontBig = document.getElementById('fontBig'),
 
 var random_col = color[Math.floor(Math.random()*color.length)]
 
-var socket = io.connect('http://139.59.158.3:80');
-//var socket = io.connect('http://localhost:4000');
 
 socket.on('mouse', newDrawing);
+
 
 function newDrawing (data) {
 
