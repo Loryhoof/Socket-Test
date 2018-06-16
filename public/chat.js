@@ -3,9 +3,7 @@ var socket = io.connect('http://139.59.158.3:80');
 //var socket = io.connect('http://localhost:4000');
 
 var random_number = Math.floor(Math.random() * 99) + 1;
-
 var num = 0;
-
 
 // Query DOM
 var message = document.getElementById('message'),
@@ -26,7 +24,6 @@ var peepoHappy = "<embed src='https://assets.change.org/photos/2/io/gq/skIogQbuy
     monkaS = "<embed src='https://d3npzzrehyahmo.cloudfront.net/images/3c/25/3c2518974fa99fb1e1c8f10324c9e78a_37866d96198_t.png' width='30' height='30' />";
 
 
-
     //sound function
     function sound(src) {
         this.sound = document.createElement("audio");
@@ -44,20 +41,9 @@ var peepoHappy = "<embed src='https://assets.change.org/photos/2/io/gq/skIogQbuy
     }
 
 
-
-
 var mySound;
 mySound = new sound("Alert - 01.mp3");
 
-
-    var colors = [
-        "red",
-        "orange",
-        "yellow",
-        "green",
-        "blue",
-        "purple"
-    ];
 
 // Emit events
 btn.addEventListener('click', function(){
@@ -88,12 +74,10 @@ message.addEventListener('keypress', function(event) {
   };
 });
 
-//socket.emit('getCount', total);
 
 
-
-socket.on('getCount', function(total) {
-  user_count.innerHTML = total + ' users online';
+socket.on('broadcast', function(data) {
+  user_count.innerHTML = data;
 });
 
 
@@ -116,8 +100,6 @@ socket.on('chat', function(data){
 
 
   newName = data.handle.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-
 
 
 
@@ -144,7 +126,7 @@ socket.on('chat', function(data){
     var n = (newMes.includes(".c") || newMes.includes(".d") || newMes.includes("http:") || newMes.includes("https:") || newMes.includes("www."));
 
 
-    if (n == true) {
+    if (n == true && b == false) {
 
       output.innerHTML += '<p><strong><span style="color:red">' + newName + ': </strong></span>' + '<a style="color:white" target="_blank" href="' + newMes + '">' + newMes +'</a>' + "\n";
 
