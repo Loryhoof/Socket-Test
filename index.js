@@ -23,6 +23,12 @@ var io = socket(server);
 
 io.on('connection', function(socket){
 
+  socket.on('mouse', mouseMsg);
+
+  function mouseMsg(data) {
+    socket.broadcast.emit('mouse', data);
+  }
+
   count++;
   io.sockets.emit('broadcast', count + ' users online')
 
